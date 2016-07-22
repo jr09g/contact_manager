@@ -28,7 +28,7 @@ class PhoneNumbersController < ApplicationController
 
     respond_to do |format|
       if @phone_number.save
-        format.html { redirect_to @phone_number, notice: 'Phone number was successfully created.' }
+        format.html { redirect_to @phone_number.person, notice: 'Phone number was successfully created.' }
         format.json { render :show, status: :created, location: @phone_number }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class PhoneNumbersController < ApplicationController
   def destroy
     @phone_number.destroy
     respond_to do |format|
-      format.html { redirect_to phone_numbers_url, notice: 'Phone number was successfully destroyed.' }
+      format.html { redirect_to @phone_number.person, notice: 'Phone number was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
